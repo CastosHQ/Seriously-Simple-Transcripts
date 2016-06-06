@@ -24,7 +24,7 @@ if ( ! function_exists( 'is_ssp_active' ) ) {
 	require_once( 'ssp-includes/ssp-functions.php' );
 }
 
-if( is_ssp_active( '1.14' ) ) {
+if( is_ssp_active( '1.14.8' ) ) {
 
 	// Load plugin class files
 	require_once( 'includes/class-ssp-transcripts.php' );
@@ -33,7 +33,7 @@ if( is_ssp_active( '1.14' ) ) {
 	 * Returns the main instance of SSP_Transcripts to prevent the need to use globals.
 	 *
 	 * @since  1.0.0
-	 * @return object SSP_Stats
+	 * @return object SSP_Transcripts
 	 */
 	function SSP_Transcripts () {
 		$instance = SSP_Transcripts::instance( __FILE__, '1.0.0' );

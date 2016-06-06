@@ -11,7 +11,7 @@ Add downloadable transcripts to your Seriously Simple Podcasting episodes.
 
 == Description ==
 
-> This plugin is an add-on for [Seriously Simple Podcasting](https://www.seriouslysimplepodcasting.com/) and requires at least **v1.14** of Seriously Simple Podcasting in order to work.
+> This plugin is an add-on for [Seriously Simple Podcasting](https://www.seriouslysimplepodcasting.com/) and requires at least **v1.14.8** of Seriously Simple Podcasting in order to work.
 
 Seriously Simple Podcasting is great for getting your audio (or video) content out there and making it available for everyone to find, but often you want to add that little bit of extra value for your listeners by supplying them with a written transcript of your episodes. Sure - you can do this by pasting all the text in your episode content, or adding a manual link in there, but a more automated and altogether cleaner option would be really great. That is exactly what this plugin provides.
 
@@ -43,7 +43,7 @@ Installing "Seriously Simple Transcripts" can be done either by searching for "S
 
 = What version of Seriously Simple Podcasting does this plugin require? =
 
-In order to use this plugin you need to have at least v1.14 of [Seriously Simple Podcasting](https://www.seriouslysimplepodcasting.com/). If you do not have Seriously Simple Podcasting active or you are using a version older than v1.14 then this plugin will do nothing.
+In order to use this plugin you need to have at least v1.14.8 of [Seriously Simple Podcasting](https://www.seriouslysimplepodcasting.com/). If you do not have Seriously Simple Podcasting active or you are using a version older than v1.14.8 then this plugin will do nothing.
 
 == Changelog ==
 

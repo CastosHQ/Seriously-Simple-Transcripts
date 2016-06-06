@@ -111,7 +111,7 @@ class SSP_Transcripts {
 				$new_fields['transcript_file'] = array(
 				    'name' => __( 'Transcript file:' , 'seriously-simple-transcripts' ),
 				    'description' => __( 'Upload the transcript file or paste the file URL here.' , 'seriously-simple-transcripts' ),
-				    'type' => 'url',
+				    'type' => 'file',
 				    'default' => '',
 				    'section' => 'info',
 				);
