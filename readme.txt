@@ -45,10 +45,22 @@ Installing "Seriously Simple Transcripts" can be done either by searching for "S
 
 In order to use this plugin you need to have at least v1.14.8 of [Seriously Simple Podcasting](https://www.seriouslysimplepodcasting.com/). If you do not have Seriously Simple Podcasting active or you are using a version older than v1.14.8 then this plugin will do nothing.
 
+= What if I only want the 'Download transcript' link to appear for some episodes, but not others? =
+
+The 'Download transcript' link will only appear on episodes to which you have uploaded a transcript file. If you don't upload a file then the link will not appear.
+
+= What file formats can I use for my transcript files? =
+
+While PDF would be the most common file format for this kind of thing, you can upload absolutely any type of file that you like.
+
+= What if I host my transcript files on a different server and not inside my WordPress installation? =
+
+The transcript file works in exactly the same way as the podcast audio/video file - if you aren't uploading it directly to your WordPress site, then all you need to do is paste the URL of the file into the 'Transcript file' field when editing your episode.
+
 == Changelog ==
 
 = 1.0 =
-* 2016-06-06
+* 2016-06-07
 * Initial release
 
 == Upgrade Notice ==
