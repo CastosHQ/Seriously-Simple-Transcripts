@@ -7,7 +7,7 @@
  * Author: Castos
  * Author URI: https://www.castos.com/
  * Requires at least: 4.4
- * Tested up to: 4.5.2
+ * Tested up to: 5.0
  *
  * Text Domain: seriously-simple-transcripts
  *
