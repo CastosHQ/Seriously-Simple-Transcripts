@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Seriously Simple Transcripts
- * Version: 1.0
+ * Version: 1.0.1
  * Plugin URI: https://wordpress.org/plugins/seriously-simple-transcripts
  * Description: Add downloadable transcripts to your Seriously Simple Podcasting episodes.
- * Author: Hugh Lashbrooke
- * Author URI: https://hughlashbrooke.com/
+ * Author: Castos
+ * Author URI: https://www.castos.com/
  * Requires at least: 4.4
  * Tested up to: 4.5.2
  *
@@ -36,7 +36,7 @@ if( is_ssp_active( '1.14.8' ) ) {
 	 * @return object SSP_Transcripts
 	 */
 	function SSP_Transcripts () {
-		$instance = SSP_Transcripts::instance( __FILE__, '1.0.0' );
+		$instance = SSP_Transcripts::instance( __FILE__, '1.0.1' );
 		return $instance;
 	}
 

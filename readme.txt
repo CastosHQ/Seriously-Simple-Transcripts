@@ -1,9 +1,9 @@
 === Seriously Simple Transcripts ===
-Contributors: hlashbrooke
+Contributors: PodcastMotor, psykro, hlashbrooke
 Tags: seriously simple podcasting, transcripts, podcast, podcasting, ssp, free, add-ons, extensions, addons
 Requires at least: 4.4
-Tested up to: 4.5.2
-Stable tag: 1.0
+Tested up to: 5.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,10 @@ While PDF would be the most common file format for this kind of thing, you can u
 The transcript file works in exactly the same way as the podcast audio/video file - if you aren't uploading it directly to your WordPress site, then all you need to do is paste the URL of the file into the 'Transcript file' field when editing your episode.
 
 == Changelog ==
+
+= 1.0.1 =
+* 2018-12-07
+* Updated plugin author and Tested up to
 
 = 1.0 =
 * 2016-06-07
