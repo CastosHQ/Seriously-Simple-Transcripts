@@ -154,7 +154,7 @@ class SSP_Transcripts {
 	 * @return  void
 	 */
 	public function load_localisation () {
-		load_plugin_textdomain( 'seriously-simple-transcripts', false, dirname( plugin_basename( $this->file ) ) . '/languages/' );
+		load_plugin_textdomain( 'seriously-simple-transcripts', false, basename( $this->dir ) . '/languages/' );
 	} // End load_localisation ()
 
 	/**
