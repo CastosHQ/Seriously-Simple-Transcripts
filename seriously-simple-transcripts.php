@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! function_exists( 'is_ssp_active' ) ) {
-	require_once( 'ssp-includes/ssp-functions.php' );
+	require_once( 'includes/ssp-functions.php' );
 }
 
 if( is_ssp_active( '1.14.8' ) ) {
