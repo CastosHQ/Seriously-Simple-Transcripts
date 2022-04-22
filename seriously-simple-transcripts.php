@@ -12,34 +12,23 @@
  * Text Domain: seriously-simple-transcripts
  *
  * @package WordPress
- * @author Hugh Lashbrooke
+ * @author Hugh Lashbrooke, Sergio Zakharchenko
  * @since 1.0.0
  */
+
+namespace SSP_Transcripts;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'is_ssp_active' ) ) {
-	require_once( 'includes/ssp-functions.php' );
-}
+define( 'SSP_TRANSCRIPTS_VERSION', '1.0.1' );
+define( 'SSP_TRANSCRIPTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'SSP_TRANSCRIPTS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-if( is_ssp_active( '1.14.8' ) ) {
+require_once __DIR__ . '/php/includes/ssp-functions.php';
+require_once __DIR__ . '/autoloader.php';
 
-	// Load plugin class files
-	require_once( 'includes/class-ssp-transcripts.php' );
-
-	/**
-	 * Returns the main instance of SSP_Transcripts to prevent the need to use globals.
-	 *
-	 * @since  1.0.0
-	 * @return object SSP_Transcripts
-	 */
-	function SSP_Transcripts () {
-		$instance = SSP_Transcripts::instance( __FILE__, '1.0.1' );
-		return $instance;
-	}
-
-	SSP_Transcripts();
-
+if ( is_ssp_active( '1.14.8' ) ) {
+	SSP_Transcripts::instance( __FILE__, SSP_TRANSCRIPTS_VERSION );
 }
