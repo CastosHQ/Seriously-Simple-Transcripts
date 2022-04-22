@@ -23,6 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'SSP_TRANSCRIPTS_VERSION', '1.0.1' );
+define( 'SSP_TRANSCRIPTS_PLUGIN_FILE', __FILE__ );
 define( 'SSP_TRANSCRIPTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SSP_TRANSCRIPTS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -30,5 +31,5 @@ require_once __DIR__ . '/php/includes/ssp-functions.php';
 require_once __DIR__ . '/autoloader.php';
 
 if ( is_ssp_active( '1.14.8' ) ) {
-	SSP_Transcripts::instance( __FILE__, SSP_TRANSCRIPTS_VERSION );
+	ssp_transcripts();
 }

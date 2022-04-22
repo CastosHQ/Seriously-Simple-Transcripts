@@ -1,6 +1,6 @@
 <?php
 
-namespace SSP_Transcripts;
+namespace SSP_Transcripts\Handlers;
 
 /**
  * SSP Dependency Checker
