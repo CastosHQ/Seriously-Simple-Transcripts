@@ -38,10 +38,10 @@ class Episode_Fields_Controller extends Abstract_Controller {
 				$meta_enabled = get_option( 'ss_podcasting_player_meta_data_enabled' );
 
 				if ( ! $meta_enabled ) {
-					$message = __( 'To add a <strong>Download Transcript</strong> link, <a href="%s">Enable Player meta data</a>', 'seriously-simple-transcripts' );
+					$message = __( 'To add a <strong>download transcript</strong> link, <a href="%s">enable player meta data</a>', 'seriously-simple-transcripts' );
 					$message = sprintf( $message, admin_url( 'edit.php?post_type=' . SSP_CPT_PODCAST . '&page=podcast_settings&tab=player-settings#player_meta_data_enabled' ) );
 
-					$new_fields['transcript_file']['description'] .= '<br><div class="warning">' . $message . '</div>';
+					$new_fields['transcript_file']['description'] .= '<br><div class="ssp-error">' . $message . '</div>';
 				}
 			}
 		}
