@@ -5,9 +5,7 @@ namespace SSP_Transcripts\Controllers;
 class Episode_Fields_Controller extends Abstract_Controller {
 
 	/**
-	 * Constructor function.
-	 * @access  public
-	 * @since   1.0.0
+	 * Init function.
 	 */
 	public function init() {
 		// Add custom field to episode data
@@ -29,7 +27,8 @@ class Episode_Fields_Controller extends Abstract_Controller {
 			if ( 'audio_file' == $key ) {
 				$new_fields['transcript_file'] = array(
 					'name'        => __( 'Transcript file:', 'seriously-simple-transcripts' ),
-					'description' => __( 'Upload the transcript file or paste the file URL here.', 'seriously-simple-transcripts' ),
+					'description' => __( 'Upload the transcript file or paste the file URL here.', 'seriously-simple-transcripts' ) .
+					                 '<br>' . __( 'To show the transcript file in the feed, please use SRT, VTT, JSON, HTML or TXT files.' ),
 					'type'        => 'file',
 					'default'     => '',
 					'section'     => 'info',

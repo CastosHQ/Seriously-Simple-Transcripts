@@ -51,6 +51,7 @@ class SSP_Transcripts {
 	 * @see Plugin_Controller
 	 * @see Episode_Fields_Controller
 	 * @see Frontend_Controller
+	 * @see Feed_Controller
 	 * @see Settings_Controller
 	 *
 	 * @see Assets_Controller
@@ -61,6 +62,7 @@ class SSP_Transcripts {
 			'plugin'   => 'SSP_Transcripts\Controllers\Plugin_Controller',
 			'fields'   => 'SSP_Transcripts\Controllers\Episode_Fields_Controller',
 			'frontend' => 'SSP_Transcripts\Controllers\Frontend_Controller',
+			'feed'     => 'SSP_Transcripts\Controllers\Feed_Controller',
 			'settings' => 'SSP_Transcripts\Controllers\Settings_Controller',
 		);
 
