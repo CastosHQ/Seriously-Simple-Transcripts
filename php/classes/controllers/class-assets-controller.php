@@ -5,17 +5,14 @@ namespace SSP_Transcripts\Controllers;
 class Assets_Controller extends Abstract_Controller {
 
 	/**
-	 * Constructor function.
-	 * @access  public
-	 * @since   1.0.0
+	 * Init function.
 	 */
 	public function init() {
-		// Load admin Javascript
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 	}
 
 	/**
-	 * Load admin Javascript.
+	 * Load admin JavaScript.
 	 * @access  public
 	 * @return  void
 	 * @since   1.0.0

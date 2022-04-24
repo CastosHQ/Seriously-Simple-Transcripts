@@ -2,9 +2,11 @@
 
 namespace SSP_Transcripts;
 
+use SSP_Transcripts\Controllers\Assets_Controller;
 use SSP_Transcripts\Controllers\Episode_Fields_Controller;
 use SSP_Transcripts\Controllers\Frontend_Controller;
 use SSP_Transcripts\Controllers\Plugin_Controller;
+use SSP_Transcripts\Controllers\Settings_Controller;
 use SSP_Transcripts\Handlers\Controllers_Handler;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,20 +42,18 @@ class SSP_Transcripts {
 		$this->init_controllers();
 	}
 
-	public function init(){
-
-	}
-
 	/**
 	 * Initialize all the controllers.
+	 *
+	 * @return void
 	 *
 	 * @see Assets_Controller
 	 * @see Plugin_Controller
 	 * @see Episode_Fields_Controller
 	 * @see Frontend_Controller
+	 * @see Settings_Controller
 	 *
-	 * @return void
-	 *
+	 * @see Assets_Controller
 	 */
 	protected function init_controllers() {
 		$controllers = array(
@@ -61,6 +61,7 @@ class SSP_Transcripts {
 			'plugin'   => 'SSP_Transcripts\Controllers\Plugin_Controller',
 			'fields'   => 'SSP_Transcripts\Controllers\Episode_Fields_Controller',
 			'frontend' => 'SSP_Transcripts\Controllers\Frontend_Controller',
+			'settings' => 'SSP_Transcripts\Controllers\Settings_Controller',
 		);
 
 		$this->controllers_handler = new Controllers_Handler( $controllers );

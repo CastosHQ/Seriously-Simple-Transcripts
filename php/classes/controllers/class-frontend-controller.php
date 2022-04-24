@@ -5,16 +5,15 @@ namespace SSP_Transcripts\Controllers;
 class Frontend_Controller extends Abstract_Controller {
 
 	/**
-	 * Constructor function.
-	 * @access  public
-	 * @since   1.0.0
+	 * Init function.
 	 */
 	public function init() {
-		// Add transcript download link to episode meta
 		add_filter( 'ssp_episode_meta_details', array( $this, 'display_link' ), 10, 3 );
 	}
 
 	/**
+	 * Add transcript download link to episode meta.
+	 *
 	 * @param $meta
 	 * @param $episode_id
 	 * @param $context
@@ -24,6 +23,12 @@ class Frontend_Controller extends Abstract_Controller {
 	public function display_link( $meta = array(), $episode_id = 0, $context = '' ) {
 
 		if ( ! $episode_id ) {
+			return $meta;
+		}
+
+		$display_link_enabled = ssp_get_option( 'download_transcript_enabled', 'on' );
+
+		if ( 'on' !== $display_link_enabled ) {
 			return $meta;
 		}
 
