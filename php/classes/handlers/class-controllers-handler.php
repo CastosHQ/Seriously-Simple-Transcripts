@@ -10,6 +10,9 @@ use SSP_Transcripts\Interfaces\Controller;
  */
 class Controllers_Handler {
 
+	/**
+	 * @var Controller[]
+	 * */
 	private $controllers;
 
 	/**
@@ -21,8 +24,11 @@ class Controllers_Handler {
 	public function __construct( $controllers ) {
 		foreach ( $controllers as $id => $controller ) {
 			$instance = new $controller;
-			$this->set( $id, $instance );
-			$instance->init();
+
+			if ( $instance instanceof Controller ) {
+				$this->set( $id, $instance );
+				$instance->init();
+			}
 		}
 	}
 

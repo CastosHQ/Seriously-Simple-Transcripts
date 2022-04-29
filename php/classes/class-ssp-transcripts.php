@@ -8,6 +8,8 @@ use SSP_Transcripts\Controllers\Frontend_Controller;
 use SSP_Transcripts\Controllers\Plugin_Controller;
 use SSP_Transcripts\Controllers\Settings_Controller;
 use SSP_Transcripts\Handlers\Controllers_Handler;
+use SSP_Transcripts\Handlers\Integrations_Handler;
+use SSP_Transcripts\Integrations\Elementor\Elementor_Widgets;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -32,6 +34,7 @@ class SSP_Transcripts {
 	 * @since   1.1.0
 	 */
 	public $controllers_handler;
+
 
 	/**
 	 * Constructor function.
@@ -58,16 +61,18 @@ class SSP_Transcripts {
 	 */
 	protected function init_controllers() {
 		$controllers = array(
-			'assets'   => 'SSP_Transcripts\Controllers\Assets_Controller',
-			'plugin'   => 'SSP_Transcripts\Controllers\Plugin_Controller',
-			'fields'   => 'SSP_Transcripts\Controllers\Episode_Fields_Controller',
-			'frontend' => 'SSP_Transcripts\Controllers\Frontend_Controller',
-			'feed'     => 'SSP_Transcripts\Controllers\Feed_Controller',
-			'settings' => 'SSP_Transcripts\Controllers\Settings_Controller',
+			'assets'       => 'SSP_Transcripts\Controllers\Assets_Controller',
+			'plugin'       => 'SSP_Transcripts\Controllers\Plugin_Controller',
+			'fields'       => 'SSP_Transcripts\Controllers\Episode_Fields_Controller',
+			'frontend'     => 'SSP_Transcripts\Controllers\Frontend_Controller',
+			'feed'         => 'SSP_Transcripts\Controllers\Feed_Controller',
+			'settings'     => 'SSP_Transcripts\Controllers\Settings_Controller',
+			'integrations' => 'SSP_Transcripts\Controllers\Integrations_Controller',
 		);
 
 		$this->controllers_handler = new Controllers_Handler( $controllers );
 	}
+
 
 	/**
 	 * Main SSP_Transcripts Instance
