@@ -1,0 +1,1 @@
+{"version":3,"file":"css/all.css","mappings":";;;AAAA;EACE;ACCF,C","sources":["webpack://seriously-simple-transcripts/./src/scss/components/elementor.scss","webpack://seriously-simple-transcripts/./src/scss/all.scss"],"sourcesContent":[".elementor {\n  color: red;\n}\n",".elementor {\n  color: red;\n}"],"names":[],"sourceRoot":""}

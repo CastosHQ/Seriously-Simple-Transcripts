@@ -3,10 +3,10 @@
 namespace SSP_Transcripts\Integrations\Elementor;
 
 use Elementor\Plugin as Elementor;
-use SSP_Transcripts\Integrations\Abstract_Integration;
+use SSP_Transcripts\Integrations\Abstract_Integrator;
 use SSP_Transcripts\Integrations\Elementor\Widgets\Elementor_Transcripts_Widget;
 
-class Elementor_Widgets extends Abstract_Integration {
+class Elementor_Integrator extends Abstract_Integrator {
 
 	/**
 	 * Minimum Elementor Version

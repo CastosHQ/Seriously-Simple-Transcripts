@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/castos-transcript",
+	"version": "0.1.0",
+	"title": "Castos Transcript",
+	"category": "text",
+	"icon": "playlist-audio",
+	"description": "Transcript of your episode. It won't be shown in the feed.",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "text",
+			"selector": ".ssp-transcript-title"
+		},
+		"content": {
+			"type": "string",
+			"source": "text",
+			"selector": ".ssp-transcript-content"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "seriously-simple-transcripts",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

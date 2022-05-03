@@ -4,7 +4,7 @@ namespace SSP_Transcripts\Integrations;
 
 use SSP_Transcripts\Interfaces\Integration;
 
-abstract class Abstract_Integration implements Integration {
+abstract class Abstract_Integrator implements Integration {
 
 	public function __construct() {
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );

@@ -29,7 +29,8 @@ class Integrations_Controller extends Abstract_Controller {
 	 */
 	protected function init_integrations() {
 		$integrations = array(
-			'elementor' => 'SSP_Transcripts\Integrations\Elementor\Elementor_Widgets',
+			'elementor' => 'SSP_Transcripts\Integrations\Elementor\Elementor_Integrator',
+			'gutenberg' => 'SSP_Transcripts\Integrations\Gutenberg\Gutenberg_Integrator',
 		);
 
 		$this->integrations_handler = new Integrations_Handler( $integrations );
