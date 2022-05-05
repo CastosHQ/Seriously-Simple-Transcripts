@@ -17,6 +17,10 @@
 			"type": "string",
 			"source": "text",
 			"selector": ".ssp-transcript-content"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "#28303d"
 		}
 	},
 	"supports": {
