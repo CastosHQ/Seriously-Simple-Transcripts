@@ -21,6 +21,10 @@
 		"titleColor": {
 			"type": "string",
 			"default": "#28303d"
+		},
+		"panelBg": {
+			"type": "string",
+			"default": "#f3f3f4"
 		}
 	},
 	"supports": {

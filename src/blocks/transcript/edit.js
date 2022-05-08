@@ -50,7 +50,7 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
             );
         }
 
-        const {spacing, titleColor} = props.attributes;
+        const {spacing, titleColor, panelBg} = props.attributes;
 
         // add has-spacing-xy class to block
         if (spacing) {
@@ -65,6 +65,18 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
                         title={__('Design Settings')}
                         initialOpen={true}
                     >
+                        <BaseControl label={__('Panel background')}>
+                            <ColorPicker
+                                disableAlpha={false}
+                                oldHue={panelBg}
+                                color={props.attributes.panelBg}
+                                onChangeComplete={(selectedColor) => {
+                                    props.setAttributes({
+                                        panelBg: selectedColor.hex,
+                                    });
+                                }}
+                            />
+                        </BaseControl>
                         <BaseControl label={__('Title color')}>
                             <ColorPicker
                                 disableAlpha={false}

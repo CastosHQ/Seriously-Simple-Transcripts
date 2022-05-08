@@ -3,6 +3,8 @@
 namespace SSP_Transcripts\Controllers;
 
 use SSP_Transcripts\Handlers\Integrations_Handler;
+use SSP_Transcripts\Integrations\Elementor\Elementor_Integrator;
+use SSP_Transcripts\Integrations\Gutenberg\Gutenberg_Integrator;
 
 class Integrations_Controller extends Abstract_Controller {
 
@@ -25,7 +27,8 @@ class Integrations_Controller extends Abstract_Controller {
 	 *
 	 * @return void
 	 *
-	 * @see Elementor_Widgets
+	 * @see Elementor_Integrator
+	 * @see Gutenberg_Integrator
 	 */
 	protected function init_integrations() {
 		$integrations = array(

@@ -10,7 +10,7 @@ export function template({attributes, title}) {
                             <input type="checkbox" id="chck1"/>
                             <label className="tab-label ssp-transcript-title"
                                    htmlFor="chck1"
-                                   style={{color: attributes.titleColor}}
+                                   style={{color: attributes.titleColor, background: attributes.panelBg}}
                             >{title}</label>
                             <div className="tab-content ssp-transcript-content">
                                 {attributes.content}

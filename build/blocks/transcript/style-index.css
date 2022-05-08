@@ -8,6 +8,10 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+:root {
+  --castos-transcript--panel-bg: #F3F3F4;
+}
+
 .wp-block-create-block-castos-transcript input[type=checkbox] {
   position: absolute;
   opacity: 0;
@@ -31,13 +35,13 @@
   justify-content: space-between;
   padding: 1em;
   margin: 0;
-  background: #F3F3F4;
+  background: var(--castos-transcript--panel-bg);
   font-weight: bold;
   cursor: pointer;
   /* Icon */
 }
 .wp-block-create-block-castos-transcript .tab-label:hover {
-  background: #e6e6e8;
+  filter: brightness(95%);
 }
 .wp-block-create-block-castos-transcript .tab-label::after {
   content: "❯";
@@ -56,14 +60,14 @@
   justify-content: flex-end;
   padding: 1em;
   font-size: 0.75em;
-  background: #F3F3F4;
+  background: var(--castos-transcript--panel-bg);
   cursor: pointer;
 }
 .wp-block-create-block-castos-transcript .tab-close:hover {
-  background: #e6e6e8;
+  filter: brightness(95%);
 }
 .wp-block-create-block-castos-transcript input:checked + .tab-label {
-  background: #e6e6e8;
+  filter: brightness(95%);
 }
 .wp-block-create-block-castos-transcript input:checked + .tab-label::after {
   transform: rotate(90deg);

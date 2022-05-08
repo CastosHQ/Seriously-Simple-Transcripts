@@ -5,6 +5,7 @@ namespace SSP_Transcripts;
 use SSP_Transcripts\Controllers\Assets_Controller;
 use SSP_Transcripts\Controllers\Episode_Fields_Controller;
 use SSP_Transcripts\Controllers\Frontend_Controller;
+use SSP_Transcripts\Controllers\Integrations_Controller;
 use SSP_Transcripts\Controllers\Plugin_Controller;
 use SSP_Transcripts\Controllers\Settings_Controller;
 use SSP_Transcripts\Handlers\Controllers_Handler;
@@ -56,6 +57,7 @@ class SSP_Transcripts {
 	 * @see Frontend_Controller
 	 * @see Feed_Controller
 	 * @see Settings_Controller
+	 * @see Integrations_Controller
 	 *
 	 * @see Assets_Controller
 	 */

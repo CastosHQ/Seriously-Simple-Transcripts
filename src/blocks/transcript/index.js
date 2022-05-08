@@ -37,12 +37,6 @@ registerBlockType('create-block/castos-transcript', {
             content: ''
         },
     },
-    /**
-     * @see ./edit.js
-     */
     edit: edit,
-    /**
-     * @see ./save.js
-     */
     save,
 });

@@ -82,7 +82,8 @@ const designSettings = createHigherOrderComponent(BlockEdit => {
 
     const {
       spacing,
-      titleColor
+      titleColor,
+      panelBg
     } = props.attributes; // add has-spacing-xy class to block
 
     if (spacing) {
@@ -93,6 +94,17 @@ const designSettings = createHigherOrderComponent(BlockEdit => {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Design Settings'),
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Panel background')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      disableAlpha: false,
+      oldHue: panelBg,
+      color: props.attributes.panelBg,
+      onChangeComplete: selectedColor => {
+        props.setAttributes({
+          panelBg: selectedColor.hex
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title color')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
       disableAlpha: false,
@@ -162,15 +174,7 @@ __webpack_require__.r(__webpack_exports__);
       content: ''
     }
   },
-
-  /**
-   * @see ./edit.js
-   */
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
-
-  /**
-   * @see ./save.js
-   */
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
@@ -248,7 +252,8 @@ function template(_ref) {
     className: "tab-label ssp-transcript-title",
     htmlFor: "chck1",
     style: {
-      color: attributes.titleColor
+      color: attributes.titleColor,
+      background: attributes.panelBg
     }
   }, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "tab-content ssp-transcript-content"

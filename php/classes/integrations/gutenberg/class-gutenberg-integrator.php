@@ -17,7 +17,6 @@ class Gutenberg_Integrator extends Abstract_Integrator {
 
 	public function init_blocks() {
 		$blocks = array(
-			'starter',
 			'transcript'
 		);
 
