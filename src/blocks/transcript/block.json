@@ -16,11 +16,16 @@
 		"content": {
 			"type": "string",
 			"source": "text",
+			"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			"selector": ".ssp-transcript-content"
 		},
 		"titleColor": {
 			"type": "string",
 			"default": "#28303d"
+		},
+		"titleSize": {
+			"type": "integer",
+			"default": 16
 		},
 		"panelBg": {
 			"type": "string",

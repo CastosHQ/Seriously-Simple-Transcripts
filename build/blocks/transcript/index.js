@@ -70,7 +70,8 @@ const {
 const {
   PanelBody,
   ColorPicker,
-  BaseControl
+  BaseControl,
+  RangeControl
 } = wp.components;
 const enableSpacingControlOnBlocks = ['create-block/castos-transcript'];
 const designSettings = createHigherOrderComponent(BlockEdit => {
@@ -94,17 +95,6 @@ const designSettings = createHigherOrderComponent(BlockEdit => {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Design Settings'),
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Panel background')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
-      disableAlpha: false,
-      oldHue: panelBg,
-      color: props.attributes.panelBg,
-      onChangeComplete: selectedColor => {
-        props.setAttributes({
-          panelBg: selectedColor.hex
-        });
-      }
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title color')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
       disableAlpha: false,
@@ -113,6 +103,27 @@ const designSettings = createHigherOrderComponent(BlockEdit => {
       onChangeComplete: selectedColor => {
         props.setAttributes({
           titleColor: selectedColor.hex
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title size'),
+      initialPosition: props.attributes.titleSize,
+      min: 6,
+      max: 60,
+      onChange: size => {
+        props.setAttributes({
+          titleSize: size
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Panel background')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      disableAlpha: false,
+      oldHue: panelBg,
+      color: props.attributes.panelBg,
+      onChangeComplete: selectedColor => {
+        props.setAttributes({
+          panelBg: selectedColor.hex
         });
       }
     })))));
@@ -235,6 +246,26 @@ function template(_ref) {
     attributes,
     title
   } = _ref;
+
+  const getTitleStyle = function (attributes) {
+    const titleStyle = {};
+    const attributeSettings = wp.data.select('core/blocks').getBlockType('create-block/castos-transcript').attributes;
+
+    if (attributes.titleColor !== attributeSettings.titleColor.default) {
+      titleStyle['color'] = attributes.titleColor;
+    }
+
+    if (attributes.panelBg !== attributeSettings.panelBg.default) {
+      titleStyle['background'] = attributes.panelBg;
+    }
+
+    if (attributes.titleSize !== attributeSettings.titleSize.default) {
+      titleStyle['fontSize'] = attributes.titleSize + 'px';
+    }
+
+    return titleStyle;
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ssp-transcript"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -251,10 +282,7 @@ function template(_ref) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: "tab-label ssp-transcript-title",
     htmlFor: "chck1",
-    style: {
-      color: attributes.titleColor,
-      background: attributes.panelBg
-    }
+    style: getTitleStyle(attributes)
   }, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "tab-content ssp-transcript-content"
   }, attributes.content))))));

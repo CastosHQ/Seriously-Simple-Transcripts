@@ -35,7 +35,7 @@ const {addFilter} = wp.hooks;
 const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.editor;
-const {PanelBody, ColorPicker, BaseControl} = wp.components;
+const {PanelBody, ColorPicker, BaseControl, RangeControl} = wp.components;
 
 const enableSpacingControlOnBlocks = [
     'create-block/castos-transcript',
@@ -65,18 +65,6 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
                         title={__('Design Settings')}
                         initialOpen={true}
                     >
-                        <BaseControl label={__('Panel background')}>
-                            <ColorPicker
-                                disableAlpha={false}
-                                oldHue={panelBg}
-                                color={props.attributes.panelBg}
-                                onChangeComplete={(selectedColor) => {
-                                    props.setAttributes({
-                                        panelBg: selectedColor.hex,
-                                    });
-                                }}
-                            />
-                        </BaseControl>
                         <BaseControl label={__('Title color')}>
                             <ColorPicker
                                 disableAlpha={false}
@@ -85,6 +73,29 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
                                 onChangeComplete={(selectedColor) => {
                                     props.setAttributes({
                                         titleColor: selectedColor.hex,
+                                    });
+                                }}
+                            />
+                        </BaseControl>
+                        <RangeControl
+                            label={__('Title size')}
+                            initialPosition={props.attributes.titleSize}
+                            min={6}
+                            max={60}
+                            onChange={(size) => {
+                                props.setAttributes({
+                                    titleSize: size,
+                                });
+                            }}
+                        />
+                        <BaseControl label={__('Panel background')}>
+                            <ColorPicker
+                                disableAlpha={false}
+                                oldHue={panelBg}
+                                color={props.attributes.panelBg}
+                                onChangeComplete={(selectedColor) => {
+                                    props.setAttributes({
+                                        panelBg: selectedColor.hex,
                                     });
                                 }}
                             />
