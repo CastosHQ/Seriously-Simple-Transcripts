@@ -34,29 +34,31 @@ const {
   RangeControl,
   ToggleControl
 } = wp.components;
-const enableControlOnBlocks = ['create-block/castos-transcript'];
 const designSettings = createHigherOrderComponent(BlockEdit => {
   return props => {
-    // Do nothing if it's another block than our defined ones.
-    if (!enableControlOnBlocks.includes(props.name)) {
+    // Do nothing if it's not our block
+    if ('create-block/castos-transcript' !== props.name) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props);
     }
 
     const {
       titleColor,
       titleSize,
-      panelBg,
+      titleBg,
       openContent
     } = props.attributes;
-    console.log('openContent:', openContent);
+    const {
+      contentColor,
+      contentSize,
+      contentBg
+    } = props.attributes;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Design Settings'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Title Settings'),
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Open Content By Default'),
       checked: openContent,
       onChange: val => {
-        console.log('openContent changed:', val);
         props.setAttributes({
           openContent: val
         });
@@ -83,14 +85,48 @@ const designSettings = createHigherOrderComponent(BlockEdit => {
         });
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Panel background')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Title background')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
       disableAlpha: false,
-      oldHue: panelBg,
-      color: panelBg,
+      oldHue: titleBg,
+      color: titleBg,
       onChangeComplete: selectedColor => {
         props.setAttributes({
-          panelBg: selectedColor.hex
+          titleBg: selectedColor.hex
+        });
+      }
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content Settings')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content text color')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      disableAlpha: false,
+      oldHue: contentColor,
+      color: contentColor,
+      onChangeComplete: selectedColor => {
+        props.setAttributes({
+          contentColor: selectedColor.hex
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content text size'),
+      initialPosition: titleSize,
+      min: 6,
+      max: 60,
+      onChange: size => {
+        props.setAttributes({
+          contentSize: size
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content background')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      disableAlpha: false,
+      oldHue: contentBg,
+      color: contentBg,
+      onChangeComplete: selectedColor => {
+        props.setAttributes({
+          contentBg: selectedColor.hex
         });
       }
     })))));
@@ -118,8 +154,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/transcript/editor.scss");
-/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./template */ "./src/blocks/transcript/template.js");
+/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./template */ "./src/blocks/transcript/template.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/transcript/editor.scss");
 /* harmony import */ var _design_settings_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./design-settings.js */ "./src/blocks/transcript/design-settings.js");
 
 
@@ -135,7 +171,7 @@ function edit(_ref) {
     setAttributes
   } = _ref;
   let title = attributes.hasOwnProperty('title') ? attributes.title : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Transcript', 'seriously-simple-transcripts');
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), attributes.content && !isSelected ? (0,_template__WEBPACK_IMPORTED_MODULE_5__.template)({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), attributes.content && !isSelected ? (0,_template__WEBPACK_IMPORTED_MODULE_4__.template)({
     attributes: attributes,
     title: title
   }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Placeholder, {
@@ -148,7 +184,7 @@ function edit(_ref) {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Content', 'seriously-simple-transcripts'),
-    value: attributes.content || '',
+    value: attributes.content,
     onChange: val => setAttributes({
       content: val
     }),
@@ -271,31 +307,6 @@ function template(_ref) {
     attributes,
     title
   } = _ref;
-
-  const getTitleStyle = function (attributes) {
-    const titleStyle = {};
-    const attributeSettings = wp.data.select('core/blocks').getBlockType('create-block/castos-transcript').attributes;
-    const {
-      titleColor,
-      panelBg,
-      titleSize
-    } = attributes;
-
-    if (titleColor !== attributeSettings.titleColor.default) {
-      titleStyle['color'] = titleColor;
-    }
-
-    if (panelBg !== attributeSettings.panelBg.default) {
-      titleStyle['background'] = panelBg;
-    }
-
-    if (titleSize !== attributeSettings.titleSize.default) {
-      titleStyle['fontSize'] = titleSize + 'px';
-    }
-
-    return titleStyle;
-  };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ssp-transcript"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -309,14 +320,64 @@ function template(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "checkbox",
     id: "chck1",
-    checked: attributes.openContent
+    checked: attributes.openContent,
+    onChange: null
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: "tab-label ssp-transcript-title",
     htmlFor: "chck1",
     style: getTitleStyle(attributes)
   }, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tab-content ssp-transcript-content"
+    className: "tab-content ssp-transcript-content",
+    style: getContentStyle(attributes)
   }, attributes.content))))));
+
+  function getTitleStyle(attributes) {
+    let style = {};
+    const attributeSettings = wp.data.select('core/blocks').getBlockType('create-block/castos-transcript').attributes;
+    const {
+      titleColor,
+      titleBg,
+      titleSize
+    } = attributes;
+
+    if (titleColor !== attributeSettings.titleColor.default) {
+      style['color'] = titleColor;
+    }
+
+    if (titleBg !== attributeSettings.titleBg.default) {
+      style['background'] = titleBg;
+    }
+
+    if (titleSize !== attributeSettings.titleSize.default) {
+      style['fontSize'] = titleSize + 'px';
+    }
+
+    return style;
+  }
+
+  function getContentStyle(attributes) {
+    let style = {};
+    const attributeSettings = wp.data.select('core/blocks').getBlockType('create-block/castos-transcript').attributes;
+    const {
+      contentColor,
+      contentBg,
+      contentSize
+    } = attributes;
+
+    if (contentColor !== attributeSettings.contentColor.default) {
+      style['color'] = contentColor;
+    }
+
+    if (contentBg !== attributeSettings.contentBg.default) {
+      style['background'] = contentBg;
+    }
+
+    if (contentSize !== attributeSettings.contentSize.default) {
+      style['fontSize'] = contentSize + 'px';
+    }
+
+    return style;
+  }
 }
 
 /***/ }),

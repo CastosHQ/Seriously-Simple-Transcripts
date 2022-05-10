@@ -27,13 +27,25 @@
 			"type": "integer",
 			"default": 16
 		},
-		"panelBg": {
+		"titleBg": {
 			"type": "string",
 			"default": "#f3f3f4"
 		},
 		"openContent": {
 			"type": "boolean",
 			"default": false
+		},
+		"contentSize": {
+			"type": "integer",
+			"default": 16
+		},
+		"contentColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"contentBg": {
+			"type": "string",
+			"default": "#ffffff"
 		}
 	},
 	"supports": {

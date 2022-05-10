@@ -1,10 +1,9 @@
 import {Placeholder, TextControl, TextareaControl} from '@wordpress/components';
 import {useBlockProps} from '@wordpress/block-editor';
 import {__} from '@wordpress/i18n';
-import './editor.scss';
 import {template} from './template';
+import './editor.scss';
 import './design-settings.js';
-
 
 export default function edit({attributes, isSelected, setAttributes}) {
     let title = attributes.hasOwnProperty('title') ? attributes.title : __('Transcript', 'seriously-simple-transcripts');
@@ -22,7 +21,7 @@ export default function edit({attributes, isSelected, setAttributes}) {
                     />
                     <TextareaControl
                         label={__('Content', 'seriously-simple-transcripts')}
-                        value={attributes.content || ''}
+                        value={attributes.content}
                         onChange={(val) => setAttributes({content: val})}
                         rows="10"
                     />
