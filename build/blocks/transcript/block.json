@@ -30,6 +30,10 @@
 		"panelBg": {
 			"type": "string",
 			"default": "#f3f3f4"
+		},
+		"openContent": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {

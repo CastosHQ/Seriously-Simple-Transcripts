@@ -4,7 +4,7 @@ const {addFilter} = wp.hooks;
 const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.editor;
-const {PanelBody, ColorPicker, BaseControl, RangeControl} = wp.components;
+const {PanelBody, ColorPicker, BaseControl, RangeControl, ToggleControl} = wp.components;
 
 const enableControlOnBlocks = [
     'create-block/castos-transcript',
@@ -19,7 +19,9 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
             );
         }
 
-        const {titleColor, titleSize, panelBg} = props.attributes;
+        const {titleColor, titleSize, panelBg, openContent} = props.attributes;
+
+        console.log('openContent:', openContent);
 
         return (
             <Fragment>
@@ -29,6 +31,16 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
                         title={__('Design Settings')}
                         initialOpen={true}
                     >
+                        <ToggleControl
+                            label={__('Open Content By Default')}
+                            checked={openContent}
+                            onChange={(val) => {
+                                console.log('openContent changed:', val);
+                                props.setAttributes({
+                                    openContent: val,
+                                });
+                            }}
+                        />
                         <BaseControl label={__('Title color')}>
                             <ColorPicker
                                 disableAlpha={false}

@@ -6,16 +6,18 @@ export function template({attributes, title}) {
         const titleStyle = {};
         const attributeSettings = wp.data.select('core/blocks').getBlockType('create-block/castos-transcript').attributes;
 
-        if (attributes.titleColor !== attributeSettings.titleColor.default) {
-            titleStyle['color'] = attributes.titleColor;
+        const {titleColor, panelBg, titleSize} = attributes;
+
+        if (titleColor !== attributeSettings.titleColor.default) {
+            titleStyle['color'] = titleColor;
         }
 
-        if (attributes.panelBg !== attributeSettings.panelBg.default) {
-            titleStyle['background'] = attributes.panelBg;
+        if (panelBg !== attributeSettings.panelBg.default) {
+            titleStyle['background'] = panelBg;
         }
 
-        if (attributes.titleSize !== attributeSettings.titleSize.default) {
-            titleStyle['fontSize'] = attributes.titleSize + 'px';
+        if (titleSize !== attributeSettings.titleSize.default) {
+            titleStyle['fontSize'] = titleSize + 'px';
         }
 
         return titleStyle
@@ -27,7 +29,7 @@ export function template({attributes, title}) {
                 <div className="col">
                     <div className="tabs">
                         <div className="tab">
-                            <input type="checkbox" id="chck1" />
+                            <input type="checkbox" id="chck1" checked={attributes.openContent} />
                             <label className="tab-label ssp-transcript-title"
                                    htmlFor="chck1"
                                    style={getTitleStyle(attributes)}
