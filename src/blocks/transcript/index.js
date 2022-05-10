@@ -38,5 +38,5 @@ registerBlockType('create-block/castos-transcript', {
         },
     },
     edit: edit,
-    save,
+    save: save,
 });

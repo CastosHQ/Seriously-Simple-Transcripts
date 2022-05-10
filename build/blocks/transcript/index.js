@@ -2,6 +2,92 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/blocks/transcript/design-settings.js":
+/*!**************************************************!*\
+  !*** ./src/blocks/transcript/design-settings.js ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const {
+  addFilter
+} = wp.hooks;
+const {
+  createHigherOrderComponent
+} = wp.compose;
+const {
+  Fragment
+} = wp.element;
+const {
+  InspectorControls
+} = wp.editor;
+const {
+  PanelBody,
+  ColorPicker,
+  BaseControl,
+  RangeControl
+} = wp.components;
+const enableControlOnBlocks = ['create-block/castos-transcript'];
+const designSettings = createHigherOrderComponent(BlockEdit => {
+  return props => {
+    // Do nothing if it's another block than our defined ones.
+    if (!enableControlOnBlocks.includes(props.name)) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props);
+    }
+
+    const {
+      titleColor,
+      titleSize,
+      panelBg
+    } = props.attributes;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Design Settings'),
+      initialOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Title color')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      disableAlpha: false,
+      oldHue: titleColor,
+      color: titleColor,
+      onChangeComplete: selectedColor => {
+        props.setAttributes({
+          titleColor: selectedColor.hex
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Title size'),
+      initialPosition: titleSize,
+      min: 6,
+      max: 60,
+      onChange: size => {
+        props.setAttributes({
+          titleSize: size
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Panel background')
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      disableAlpha: false,
+      oldHue: panelBg,
+      color: panelBg,
+      onChangeComplete: selectedColor => {
+        props.setAttributes({
+          panelBg: selectedColor.hex
+        });
+      }
+    })))));
+  };
+}, 'designSettings');
+addFilter('editor.BlockEdit', 'extend-block/transcript-design-settings', designSettings);
+
+/***/ }),
+
 /***/ "./src/blocks/transcript/edit.js":
 /*!***************************************!*\
   !*** ./src/blocks/transcript/edit.js ***!
@@ -22,6 +108,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/transcript/editor.scss");
 /* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./template */ "./src/blocks/transcript/template.js");
+/* harmony import */ var _design_settings_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./design-settings.js */ "./src/blocks/transcript/design-settings.js");
+
 
 
 
@@ -55,81 +143,6 @@ function edit(_ref) {
     rows: "10"
   })));
 }
-const {
-  addFilter
-} = wp.hooks;
-const {
-  createHigherOrderComponent
-} = wp.compose;
-const {
-  Fragment
-} = wp.element;
-const {
-  InspectorControls
-} = wp.editor;
-const {
-  PanelBody,
-  ColorPicker,
-  BaseControl,
-  RangeControl
-} = wp.components;
-const enableSpacingControlOnBlocks = ['create-block/castos-transcript'];
-const designSettings = createHigherOrderComponent(BlockEdit => {
-  return props => {
-    // Do nothing if it's another block than our defined ones.
-    if (!enableSpacingControlOnBlocks.includes(props.name)) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props);
-    }
-
-    const {
-      spacing,
-      titleColor,
-      panelBg
-    } = props.attributes; // add has-spacing-xy class to block
-
-    if (spacing) {
-      props.attributes.className = `has-spacing-${spacing}`;
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Design Settings'),
-      initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title color')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
-      disableAlpha: false,
-      oldHue: titleColor,
-      color: props.attributes.titleColor,
-      onChangeComplete: selectedColor => {
-        props.setAttributes({
-          titleColor: selectedColor.hex
-        });
-      }
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title size'),
-      initialPosition: props.attributes.titleSize,
-      min: 6,
-      max: 60,
-      onChange: size => {
-        props.setAttributes({
-          titleSize: size
-        });
-      }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BaseControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Panel background')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
-      disableAlpha: false,
-      oldHue: panelBg,
-      color: props.attributes.panelBg,
-      onChangeComplete: selectedColor => {
-        props.setAttributes({
-          panelBg: selectedColor.hex
-        });
-      }
-    })))));
-  };
-}, 'designSettings');
-addFilter('editor.BlockEdit', 'extend-block-example/with-spacing-control', designSettings);
 
 /***/ }),
 
