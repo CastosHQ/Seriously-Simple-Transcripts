@@ -15,6 +15,7 @@ export default function edit({attributes, isSelected, setAttributes}) {
 
 export function blockTemplate({attributes, isSelected = false, setAttribute = null}) {
     let title = attributes.hasOwnProperty('title') ? attributes.title : __('Transcript', 'seriously-simple-transcripts');
+    const {hideTitle, showContent, content} = attributes;
 
     return (
         <div className="ssp-transcript">
@@ -42,13 +43,13 @@ export function blockTemplate({attributes, isSelected = false, setAttribute = nu
                                             content: val
                                         })
                                     }}
-                                    value={attributes.content}
+                                    value={content}
                                     style={getContentStyle(attributes)}
                                 />
                             </div>
                         ) : (
                             <div className="tab">
-                                <input type="checkbox" id="chck1" checked={attributes.openContent} onChange={() => {
+                                <input type="checkbox" id="chck1" checked={hideTitle || showContent} onChange={() => {
                                 }}/>
                                 <label className="tab-label ssp-transcript-title"
                                        htmlFor="chck1"
@@ -56,7 +57,7 @@ export function blockTemplate({attributes, isSelected = false, setAttribute = nu
                                 >{title}</label>
                                 <div className="tab-content ssp-transcript-content"
                                      style={getContentStyle(attributes)}>
-                                    {attributes.content}
+                                    {content}
                                 </div>
                             </div>
                         )}
@@ -70,7 +71,12 @@ export function blockTemplate({attributes, isSelected = false, setAttribute = nu
         let style = {};
         const attributeSettings = wp.data.select('core/blocks').getBlockType('create-block/castos-transcript').attributes;
 
-        const {titleColor, titleBg, titleSize} = attributes;
+        const {titleColor, titleBg, titleSize, hideTitle} = attributes;
+
+        if (hideTitle) {
+            style['display'] = 'none';
+            return style;
+        }
 
         if (titleColor !== attributeSettings.titleColor.default) {
             style['color'] = titleColor;

@@ -8,6 +8,14 @@
 	"icon": "playlist-audio",
 	"description": "Transcript of your episode. It won't be shown in the feed.",
 	"attributes": {
+		"hideTitle": {
+			"type": "boolean",
+			"default": false
+		},
+		"showContent": {
+			"type": "boolean",
+			"default": false
+		},
 		"title": {
 			"type": "string",
 			"source": "text",
@@ -30,10 +38,6 @@
 		"titleBg": {
 			"type": "string",
 			"default": "#f3f3f4"
-		},
-		"openContent": {
-			"type": "boolean",
-			"default": false
 		},
 		"contentSize": {
 			"type": "integer",

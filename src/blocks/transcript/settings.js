@@ -15,7 +15,7 @@ const blockSettings = createHigherOrderComponent((BlockEdit) => {
             );
         }
 
-        const {titleColor, titleSize, titleBg, openContent} = props.attributes;
+        const {titleColor, titleSize, titleBg, showContent, hideTitle} = props.attributes;
         const {contentColor, contentSize, contentBg} = props.attributes;
 
         return (
@@ -27,49 +27,69 @@ const blockSettings = createHigherOrderComponent((BlockEdit) => {
                         initialOpen={true}
                     >
                         <ToggleControl
-                            label={__('Open Content By Default')}
-                            checked={openContent}
+                            label={__('Hide Title')}
+                            checked={hideTitle}
                             onChange={(val) => {
                                 props.setAttributes({
-                                    openContent: val,
+                                    hideTitle: val,
                                 });
                             }}
                         />
-                        <BaseControl label={__('Title color')}>
-                            <ColorPicker
-                                disableAlpha={false}
-                                oldHue={titleColor}
-                                color={titleColor}
-                                onChangeComplete={(selectedColor) => {
+
+                        {!hideTitle ?
+                            <ToggleControl
+                                label={__('Show Content By Default')}
+                                checked={showContent}
+                                onChange={(val) => {
                                     props.setAttributes({
-                                        titleColor: selectedColor.hex,
+                                        showContent: val,
+                                    });
+                                }}
+                            /> : ''}
+
+                        {!hideTitle ?
+                            <BaseControl label={__('Title color')}>
+                                <ColorPicker
+                                    disableAlpha={false}
+                                    oldHue={titleColor}
+                                    color={titleColor}
+                                    onChangeComplete={(selectedColor) => {
+                                        props.setAttributes({
+                                            titleColor: selectedColor.hex,
+                                        });
+                                    }}
+                                />
+                            </BaseControl>
+                            : ''}
+
+                        {!hideTitle ?
+                            <RangeControl
+                                label={__('Title size')}
+                                initialPosition={titleSize}
+                                min={6}
+                                max={60}
+                                onChange={(size) => {
+                                    props.setAttributes({
+                                        titleSize: size,
                                     });
                                 }}
                             />
-                        </BaseControl>
-                        <RangeControl
-                            label={__('Title size')}
-                            initialPosition={titleSize}
-                            min={6}
-                            max={60}
-                            onChange={(size) => {
-                                props.setAttributes({
-                                    titleSize: size,
-                                });
-                            }}
-                        />
-                        <BaseControl label={__('Title background')}>
-                            <ColorPicker
-                                disableAlpha={false}
-                                oldHue={titleBg}
-                                color={titleBg}
-                                onChangeComplete={(selectedColor) => {
-                                    props.setAttributes({
-                                        titleBg: selectedColor.hex,
-                                    });
-                                }}
-                            />
-                        </BaseControl>
+                            : ''}
+
+                        {!hideTitle ?
+                            <BaseControl label={__('Title background')}>
+                                <ColorPicker
+                                    disableAlpha={false}
+                                    oldHue={titleBg}
+                                    color={titleBg}
+                                    onChangeComplete={(selectedColor) => {
+                                        props.setAttributes({
+                                            titleBg: selectedColor.hex,
+                                        });
+                                    }}
+                                />
+                            </BaseControl>
+                            : ''}
                     </PanelBody>
                     <PanelBody title={__('Content Settings')}>
                         <BaseControl label={__('Content text color')}>
