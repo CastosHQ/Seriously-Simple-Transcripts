@@ -1,12 +1,10 @@
 import {useBlockProps} from '@wordpress/block-editor';
-import {__} from '@wordpress/i18n';
-import {template} from "./template";
+import {blockTemplate} from "./edit";
 
 export default function save({attributes}) {
-    const blockProps = useBlockProps.save(),
-        title = attributes.hasOwnProperty('title') ? attributes.title : __('Transcript', 'seriously-simple-transcripts');
+    const blockProps = useBlockProps.save();
 
     return <div {...blockProps}>
-        {template({attributes: attributes, title: title})}
+        {blockTemplate({attributes: attributes})}
     </div>;
 }

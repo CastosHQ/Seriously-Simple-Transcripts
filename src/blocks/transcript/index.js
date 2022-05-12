@@ -28,15 +28,6 @@ import save from './save';
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
 registerBlockType('create-block/castos-transcript', {
-    /**
-     * Used to construct a preview for the block to be shown in the block inserter.
-     */
-    example: {
-        attributes: {
-            title: '',
-            content: ''
-        },
-    },
     edit: edit,
     save: save,
 });

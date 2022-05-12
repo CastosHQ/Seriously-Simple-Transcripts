@@ -3,10 +3,10 @@ import {__} from '@wordpress/i18n';
 const {addFilter} = wp.hooks;
 const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
-const {InspectorControls} = wp.editor;
+const {InspectorControls} = wp.blockEditor;
 const {PanelBody, ColorPicker, BaseControl, RangeControl, ToggleControl} = wp.components;
 
-const designSettings = createHigherOrderComponent((BlockEdit) => {
+const blockSettings = createHigherOrderComponent((BlockEdit) => {
     return (props) => {
         // Do nothing if it's not our block
         if ('create-block/castos-transcript' !== props.name) {
@@ -86,7 +86,7 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
                         </BaseControl>
                         <RangeControl
                             label={__('Content text size')}
-                            initialPosition={titleSize}
+                            initialPosition={contentSize}
                             min={6}
                             max={60}
                             onChange={(size) => {
@@ -112,6 +112,6 @@ const designSettings = createHigherOrderComponent((BlockEdit) => {
             </Fragment>
         );
     };
-}, 'designSettings');
+}, 'blockSettings');
 
-addFilter('editor.BlockEdit', 'extend-block/transcript-design-settings', designSettings);
+addFilter('editor.BlockEdit', 'extend-block/transcript-block-settings', blockSettings);
