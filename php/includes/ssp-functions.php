@@ -1,11 +1,4 @@
 <?php
-/**
- * Functions used by plugins
- */
-
-/**
- * SSP Detection
- */
 
 use SSP_Transcripts\SSP_Transcripts;
 use SSP_Transcripts\Handlers\SSP_Dependencies;

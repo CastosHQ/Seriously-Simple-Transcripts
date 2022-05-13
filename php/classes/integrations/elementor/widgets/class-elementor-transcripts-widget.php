@@ -3,14 +3,17 @@
 namespace SSP_Transcripts\Integrations\Elementor\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
-use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
-use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Plugin;
 use Elementor\Widget_Text_Editor;
 
 class Elementor_Transcripts_Widget extends Widget_Text_Editor {
+
+	public function __construct( $data = [], $args = null ) {
+		parent::__construct( $data, $args );
+
+		$this->add_style_depends( 'ssp_transcripts' );
+	}
 
 	public function get_name() {
 		return 'transcript';
@@ -28,23 +31,6 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 		return array( 'podcasting' );
 	}
 
-	/*protected function _register_controls() {
-
-		$this->start_controls_section(
-			'content_section',
-			[
-				'label' => __( 'Content', 'seriously-simple-podcasting' ),
-				'tab'   => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->end_controls_section();
-
-	}
-
-	protected function render() {
-		echo 'Hello World!';
-	}*/
 
 	/**
 	 * Register text editor widget controls.
@@ -55,82 +41,229 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 	 * @access protected
 	 */
 	protected function register_controls() {
+
+        /**
+         * Content Controls
+         * */
 		$this->start_controls_section(
 			'section_editor',
 			[
-				'label' => esc_html__( 'Transcript', 'elementor' ),
+				'label' => esc_html__( 'Transcript', 'seriously-simple-transcripts' ),
 			]
 		);
 
 		$this->add_control(
 			'title',
 			[
-				'label' => 'Title',
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Transcript', 'elementor' ),
+				'label'   => 'Title',
+				'type'    => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Transcript', 'seriously-simple-transcripts' ),
 			]
 		);
 
 		$this->add_control(
-			'editor',
+			'content',
 			[
-				'label' => 'Content',
-				'type' => Controls_Manager::WYSIWYG,
+				'label'   => 'Content',
+				'type'    => Controls_Manager::WYSIWYG,
 				'default' => '<p>' . esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ) . '</p>',
 			]
 		);
 
+		$this->end_controls_section();
+
+
+		/**
+		 * Style Controls
+		 * */
+		$this->start_controls_section(
+			'section_style_general',
+			[
+				'label' => esc_html__( 'General', 'elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'hide_title',
+			[
+				'label'     => esc_html__( 'Hide Title', 'elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+			]
+		);
+
+		$this->add_control(
+			'show_content',
+			[
+				'label'     => esc_html__( 'Show Content By Default', 'elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => [
+					'hide_title' => '',
+				],
+			]
+		);
 
 		$this->end_controls_section();
 
+
 		$this->start_controls_section(
-			'section_style',
+			'section_style_title',
 			[
-				'label' => esc_html__( 'Text Editor', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'label' => esc_html__( 'Title', 'elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'hide_title' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+			'title_color',
+			[
+				'label'     => esc_html__( 'Title Color', 'elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .ssp-transcript-title' => 'color: {{VALUE}};',
+				],
+				'global'    => [
+					'default' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+			'title_bg',
+			[
+				'label'     => esc_html__( 'Title Background', 'elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .ssp-transcript-title' => 'background: {{VALUE}};',
+				],
+				'global'    => [
+					'default' => '',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'           => 'title_typography',
+				'label'          => esc_html__( 'Typography', 'elementor' ),
+				'fields_options' => [
+					'font_family'     => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'font-family: "{{VALUE}}"',
+						],
+					],
+					'font_size'       => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'font-size: {{SIZE}}{{UNIT}}',
+						],
+					],
+					'font_weight'     => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'font-weight: {{VALUE}}',
+						],
+					],
+					'text_transform'  => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'text-transform: {{VALUE}}',
+						],
+					],
+					'font_style'      => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'font-style: {{VALUE}}',
+						],
+					],
+					'text_decoration' => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'text-decoration: {{VALUE}}',
+						],
+					],
+					'line_height'     => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => 'line-height: {{SIZE}}{{UNIT}}',
+						],
+					],
+					'letter_spacing'  => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-title' => '--e-global-typography-{{external._id.VALUE}}-letter-spacing: {{SIZE}}{{UNIT}}',
+						],
+					],
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+
+		// Content style
+		$this->start_controls_section(
+			'section_style_content',
+			[
+				'label' => esc_html__( 'Content', 'elementor' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_responsive_control(
-			'align',
+			'content_align',
 			[
-				'label' => esc_html__( 'Alignment', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
+				'label'     => esc_html__( 'Alignment', 'elementor' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'left'    => [
 						'title' => esc_html__( 'Left', 'elementor' ),
-						'icon' => 'eicon-text-align-left',
+						'icon'  => 'eicon-text-align-left',
 					],
-					'center' => [
+					'center'  => [
 						'title' => esc_html__( 'Center', 'elementor' ),
-						'icon' => 'eicon-text-align-center',
+						'icon'  => 'eicon-text-align-center',
 					],
-					'right' => [
+					'right'   => [
 						'title' => esc_html__( 'Right', 'elementor' ),
-						'icon' => 'eicon-text-align-right',
+						'icon'  => 'eicon-text-align-right',
 					],
 					'justify' => [
 						'title' => esc_html__( 'Justified', 'elementor' ),
-						'icon' => 'eicon-text-align-justify',
+						'icon'  => 'eicon-text-align-justify',
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ssp-transcript-content' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
 
 		$this->add_control(
-			'text_color',
+			'content_color',
 			[
-				'label' => esc_html__( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
+				'label'     => esc_html__( 'Text Color', 'elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ssp-transcript-content' => 'color: {{VALUE}};',
 				],
-				'global' => [
-					'default' => Global_Colors::COLOR_TEXT,
+				'global'    => [
+					'default' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+			'content_bg',
+			[
+				'label'     => esc_html__( 'Content Background', 'elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .ssp-transcript-content' => 'background: {{VALUE}};',
+				],
+				'global'    => [
+					'default' => '',
 				],
 			]
 		);
@@ -138,175 +271,56 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'typography',
-				'global' => [
-					'default' => Global_Typography::TYPOGRAPHY_TEXT,
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
-			[
-				'name' => 'text_shadow',
-				'selector' => '{{WRAPPER}}',
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_drop_cap',
-			[
-				'label' => esc_html__( 'Drop Cap', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-				'condition' => [
-					'drop_cap' => 'yes',
-				],
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_view',
-			[
-				'label' => esc_html__( 'View', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'default' => esc_html__( 'Default', 'elementor' ),
-					'stacked' => esc_html__( 'Stacked', 'elementor' ),
-					'framed' => esc_html__( 'Framed', 'elementor' ),
-				],
-				'default' => 'default',
-				'prefix_class' => 'elementor-drop-cap-view-',
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_primary_color',
-			[
-				'label' => esc_html__( 'Primary Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}}.elementor-drop-cap-view-stacked .elementor-drop-cap' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-drop-cap-view-framed .elementor-drop-cap, {{WRAPPER}}.elementor-drop-cap-view-default .elementor-drop-cap' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-				],
-				'global' => [
-					'default' => Global_Colors::COLOR_PRIMARY,
-				],
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_secondary_color',
-			[
-				'label' => esc_html__( 'Secondary Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}}.elementor-drop-cap-view-framed .elementor-drop-cap' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-drop-cap-view-stacked .elementor-drop-cap' => 'color: {{VALUE}};',
-				],
-				'condition' => [
-					'drop_cap_view!' => 'default',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
-			[
-				'name' => 'drop_cap_shadow',
-				'selector' => '{{WRAPPER}} .elementor-drop-cap',
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_size',
-			[
-				'label' => esc_html__( 'Size', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 5,
-				],
-				'range' => [
-					'px' => [
-						'max' => 30,
+				'name'           => 'content_typography',
+				'label'          => esc_html__( 'Typography', 'elementor' ),
+				'fields_options' => [
+					'font_family'     => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'font-family: "{{VALUE}}"',
+						],
 					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-drop-cap' => 'padding: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'drop_cap_view!' => 'default',
-				],
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_space',
-			[
-				'label' => esc_html__( 'Space', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 10,
-				],
-				'range' => [
-					'px' => [
-						'max' => 50,
+					'font_size'       => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'font-size: {{SIZE}}{{UNIT}}',
+						],
 					],
-				],
-				'selectors' => [
-					'body:not(.rtl) {{WRAPPER}} .elementor-drop-cap' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'body.rtl {{WRAPPER}} .elementor-drop-cap' => 'margin-left: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_border_radius',
-			[
-				'label' => esc_html__( 'Border Radius', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ '%', 'px' ],
-				'default' => [
-					'unit' => '%',
-				],
-				'range' => [
-					'%' => [
-						'max' => 50,
+					'font_weight'     => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'font-weight: {{VALUE}}',
+						],
 					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-drop-cap' => 'border-radius: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'drop_cap_border_width', [
-				'label' => esc_html__( 'Border Width', 'elementor' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'selectors' => [
-					'{{WRAPPER}} .elementor-drop-cap' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'drop_cap_view' => 'framed',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'drop_cap_typography',
-				'selector' => '{{WRAPPER}} .elementor-drop-cap-letter',
-				'exclude' => [
-					'letter_spacing',
+					'text_transform'  => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'text-transform: {{VALUE}}',
+						],
+					],
+					'font_style'      => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'font-style: {{VALUE}}',
+						],
+					],
+					'text_decoration' => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'text-decoration: {{VALUE}}',
+						],
+					],
+					'line_height'     => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'line-height: {{SIZE}}{{UNIT}}',
+						],
+					],
+					'letter_spacing'  => [
+						'selectors' => [
+							'{{SELECTOR}} .ssp-transcript-content' => 'letter-spacing: {{SIZE}}{{UNIT}}',
+						],
+					],
 				],
 			]
 		);
 
 		$this->end_controls_section();
 	}
+
 
 	/**
 	 * Render text editor widget output on the frontend.
@@ -317,33 +331,118 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 	 * @access protected
 	 */
 	protected function render() {
-		$is_dom_optimized = Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' );
-		$is_edit_mode = Plugin::$instance->editor->is_edit_mode();
+		$is_dom_optimized             = Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' );
+		$is_edit_mode                 = Plugin::$instance->editor->is_edit_mode();
 		$should_render_inline_editing = ( ! $is_dom_optimized || $is_edit_mode );
 
-		$editor_content = $this->get_settings_for_display( 'editor' );
+		$hide_title   = $this->get_settings_for_display( 'hide_title' );
+		$show_content = $this->get_settings_for_display( 'show_content' );
+		$title        = $this->get_settings_for_display( 'title' );
+
+		$editor_content = $this->get_settings_for_display( 'content' );
 		$editor_content = $this->parse_text_editor( $editor_content );
 
 		if ( $should_render_inline_editing ) {
-			$this->add_render_attribute( 'editor', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );
+			$this->add_render_attribute( 'content', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );
+			$this->add_render_attribute( 'title', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );
 		}
 
-		$this->add_inline_editing_attributes( 'editor', 'advanced' );
+		$this->add_inline_editing_attributes( 'title' );
+		$this->add_inline_editing_attributes( 'content', 'advanced' );
 		?>
-		<?php if ( $should_render_inline_editing ) { ?>
-			<div <?php $this->print_render_attribute_string( 'editor' ); ?>>
-		<?php } ?>
-		<?php // PHPCS - the main text of a widget should not be escaped.
-		echo 'Test!!! ' . $editor_content; // phpcs:ignore WordPress.Security.EscapeOutput ?>
-		<?php if ( $should_render_inline_editing ) { ?>
-			</div>
-		<?php } ?>
 
-
-
-
+        <div class="ssp-transcript">
+            <div class="row">
+                <div class="col">
+                    <div class="tabs">
+                        <div class="tab">
+                            <input type="checkbox" id="chck1" <?php checked( $show_content, 'yes' ) ?>>
+                            <?php if( ! $hide_title ) : ?>
+                            <label class="tab-label ssp-transcript-title" for="chck1">
+								<?php if ( $should_render_inline_editing ) : ?>
+                                    <div <?php $this->print_render_attribute_string( 'title' ); ?>>
+                                <?php endif; ?>
+									<?php echo $title ?>
+                                <?php if ( $should_render_inline_editing ) : ?>
+                                    </div>
+                                <?php endif ?>
+                            </label>
+                            <?php endif; ?>
+                            <div class="tab-content ssp-transcript-content">
+								<?php if ( $should_render_inline_editing ) : ?>
+                                <div <?php $this->print_render_attribute_string( 'content' ); ?>>
+									<?php endif; ?>
+									<?php echo $editor_content; ?>
+									<?php if ( $should_render_inline_editing ) : ?>
+                                </div>
+							<?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 		<?php
 	}
+
+
+	/**
+	 * Render text editor widget output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @access protected
+	 */
+	protected function content_template() {
+		?>
+        <#
+        const isDomOptimized = ! ! elementorFrontend.config.experimentalFeatures.e_dom_optimization,
+        isEditMode = elementorFrontend.isEditMode(),
+        shouldRenderInlineEditing = ( ! isDomOptimized || isEditMode );
+        checked = "yes" === settings.show_content;
+
+        if ( shouldRenderInlineEditing ) {
+        view.addRenderAttribute( 'title', 'class', [ 'elementor-text-content', 'elementor-clearfix' ] );
+        view.addRenderAttribute( 'content', 'class', [ 'elementor-text-content', 'elementor-clearfix' ] );
+        }
+
+        view.addInlineEditingAttributes( 'title' );
+        view.addInlineEditingAttributes( 'content', 'advanced' ); #>
+
+        <div class="ssp-transcript">
+            <div class="row">
+                <div class="col">
+                    <div class="tabs">
+                        <div class="tab">
+                            <input type="checkbox" id="chck1" <# if (settings.show_content) { #>checked<# } #>>
+                            <# if ( ! settings.hide_title ) { #>
+                            <label class="tab-label ssp-transcript-title" for="chck1">
+                                <# if ( shouldRenderInlineEditing ) { #>
+                                <div {{{ view.getRenderAttributeString("title") }}}>
+                                <# } #>
+                                {{{ settings.title }}}
+                                <# if ( shouldRenderInlineEditing ) { #>
+                                </div>
+                                <# } #>
+                            </label>
+                            <# } #>
+                            <div class="tab-content ssp-transcript-content">
+                                <# if ( shouldRenderInlineEditing ) { #>
+                                <div {{{ view.getRenderAttributeString("content") }}}>
+                                <# } #>
+                                {{{ settings.content }}}
+                                <# if ( shouldRenderInlineEditing ) { #>
+                                </div>
+                                <# } #>
+                            </div>
+                        </div><!-- tab -->
+                    </div><!-- tabs -->
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- ssp-transcript -->
+		<?php
+	}
+
 
 	/**
 	 * Render plain content (what data should be stored in the post_content).

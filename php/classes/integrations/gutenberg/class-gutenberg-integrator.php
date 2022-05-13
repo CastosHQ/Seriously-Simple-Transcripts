@@ -16,12 +16,16 @@ class Gutenberg_Integrator extends Abstract_Integrator {
 	}
 
 	public function init_blocks() {
-		$blocks = array(
-			'transcript'
-		);
+		$blocks = $this->get_registered_blocks();
 
-		foreach ( $blocks as $block ) {
-			register_block_type( SSP_TRANSCRIPTS_PLUGIN_PATH . 'build/blocks/' . $block );
+		foreach ( $blocks as $block_name => $block_id ) {
+			register_block_type( SSP_TRANSCRIPTS_PLUGIN_PATH . 'build/blocks/' . $block_name );
 		}
+	}
+
+	public function get_registered_blocks(){
+		return array(
+			'transcript' => 'create-block/castos-transcript',
+		);
 	}
 }

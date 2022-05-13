@@ -1,8 +1,80 @@
 /*!******************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/scss/all.scss ***!
   \******************************************************************************************************************************************************************************************************************************************/
-.elementor {
-  color: red;
+@charset "UTF-8";
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+:root {
+  --castos-transcript--panel-bg: #F3F3F4;
+}
+
+.ssp-transcript input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.ssp-transcript .row {
+  display: flex;
+}
+.ssp-transcript .row .col {
+  flex: 1;
+}
+.ssp-transcript .tabs {
+  overflow: hidden;
+}
+.ssp-transcript .tab {
+  width: 100%;
+  overflow: hidden;
+}
+.ssp-transcript .tab-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  margin: 0;
+  background: var(--castos-transcript--panel-bg);
+  font-weight: bold;
+  cursor: pointer;
+  /* Icon */
+}
+.ssp-transcript .tab-label:hover {
+  filter: brightness(95%);
+}
+.ssp-transcript .tab-label::after {
+  content: "❯";
+  width: 1em;
+  text-align: center;
+  transition: all 0.35s;
+}
+.ssp-transcript .tab-content {
+  max-height: 0;
+  padding: 0 1em;
+  background: white;
+  transition: all 0.35s;
+}
+.ssp-transcript .tab-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
+  font-size: 0.75em;
+  background: var(--castos-transcript--panel-bg);
+  cursor: pointer;
+}
+.ssp-transcript .tab-close:hover {
+  filter: brightness(95%);
+}
+.ssp-transcript input:checked + .tab-label {
+  filter: brightness(95%);
+}
+.ssp-transcript input:checked + .tab-label::after {
+  transform: rotate(90deg);
+}
+.ssp-transcript input:checked ~ .tab-content {
+  max-height: 100vh;
+  padding: 1em;
 }
 
 /*# sourceMappingURL=all.css.map*/
