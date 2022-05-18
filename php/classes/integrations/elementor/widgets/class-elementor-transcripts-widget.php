@@ -109,7 +109,7 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 		$this->start_controls_section(
 			'section_style_title',
 			[
-				'label' => esc_html__( 'Title', 'elementor' ),
+				'label' => esc_html__( 'Title', 'seriously-simple-podcasting' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'hide_title' => '',
@@ -120,7 +120,7 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 		$this->add_control(
 			'title_color',
 			[
-				'label'     => esc_html__( 'Title Color', 'elementor' ),
+				'label'     => esc_html__( 'Title Color', 'seriously-simple-podcasting' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => [
@@ -151,7 +151,7 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 			Group_Control_Typography::get_type(),
 			[
 				'name'           => 'title_typography',
-				'label'          => esc_html__( 'Typography', 'elementor' ),
+				'label'          => esc_html__( 'Typography', 'seriously-simple-podcasting' ),
 				'fields_options' => [
 					'font_family'     => [
 						'selectors' => [
@@ -204,7 +204,7 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => esc_html__( 'Content', 'elementor' ),
+				'label' => esc_html__( 'Content', 'seriously-simple-podcasting' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);

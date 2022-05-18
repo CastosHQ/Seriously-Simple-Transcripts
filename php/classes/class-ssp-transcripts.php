@@ -9,8 +9,6 @@ use SSP_Transcripts\Controllers\Integrations_Controller;
 use SSP_Transcripts\Controllers\Plugin_Controller;
 use SSP_Transcripts\Controllers\Settings_Controller;
 use SSP_Transcripts\Handlers\Controllers_Handler;
-use SSP_Transcripts\Handlers\Integrations_Handler;
-use SSP_Transcripts\Integrations\Elementor\Elementor_Widgets;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
