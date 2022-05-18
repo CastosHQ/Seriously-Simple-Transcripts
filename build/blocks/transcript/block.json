@@ -29,7 +29,7 @@
 		},
 		"titleColor": {
 			"type": "string",
-			"default": "#28303d"
+			"default": "#000000"
 		},
 		"titleSize": {
 			"type": "integer",
