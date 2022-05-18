@@ -1,0 +1,10 @@
+_repo_assets/
+node_modules/
+src/
+.git
+.idea
+.distignore
+.gitignore
+package.json
+package-lock.json
+webpack.config.js
