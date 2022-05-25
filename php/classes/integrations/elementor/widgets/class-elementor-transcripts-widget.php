@@ -16,7 +16,7 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 	}
 
 	public function get_name() {
-		return 'transcript';
+		return 'ssp-transcript';
 	}
 
 	public function get_title() {
@@ -342,8 +342,11 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 		$editor_content = $this->get_settings_for_display( 'content' );
 		$editor_content = $this->parse_text_editor( $editor_content );
 
+		$check_id = 'ssp-transcript-check-' . wp_generate_password( 6 );
+
 		if ( $should_render_inline_editing ) {
 			$this->add_render_attribute( 'content', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );
+			$this->add_render_attribute( 'title', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );
 			$this->add_render_attribute( 'title', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );
 		}
 
@@ -356,9 +359,9 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
                 <div class="col">
                     <div class="tabs">
                         <div class="tab">
-                            <input type="checkbox" id="chck1" <?php checked( $show_content, 'yes' ) ?>>
+                            <input type="checkbox" id="<?php echo $check_id ?>" <?php checked( $show_content, 'yes' ) ?>>
                             <?php if( ! $hide_title ) : ?>
-                            <label class="tab-label ssp-transcript-title" for="chck1">
+                            <label class="tab-label ssp-transcript-title" for="<?php echo $check_id ?>">
 								<?php if ( $should_render_inline_editing ) : ?>
                                     <div <?php $this->print_render_attribute_string( 'title' ); ?>>
                                 <?php endif; ?>
@@ -400,6 +403,7 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
         isEditMode = elementorFrontend.isEditMode(),
         shouldRenderInlineEditing = ( ! isDomOptimized || isEditMode );
         checked = "yes" === settings.show_content;
+        checkId = "ssp-transcript-check-" + (Math.random() + 1).toString(36).substring(6);
 
         if ( shouldRenderInlineEditing ) {
         view.addRenderAttribute( 'title', 'class', [ 'elementor-text-content', 'elementor-clearfix' ] );
@@ -414,9 +418,9 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
                 <div class="col">
                     <div class="tabs">
                         <div class="tab">
-                            <input type="checkbox" id="chck1" <# if (settings.show_content) { #>checked<# } #>>
+                            <input type="checkbox" id="{{{ checkId }}}" <# if (settings.show_content) { #>checked<# } #>>
                             <# if ( ! settings.hide_title ) { #>
-                            <label class="tab-label ssp-transcript-title" for="chck1">
+                            <label class="tab-label ssp-transcript-title" for="{{{ checkId }}}">
                                 <# if ( shouldRenderInlineEditing ) { #>
                                 <div {{{ view.getRenderAttributeString("title") }}}>
                                 <# } #>
@@ -450,6 +454,6 @@ class Elementor_Transcripts_Widget extends Widget_Text_Editor {
 	 * @since 2.11.0
 	 */
 	public function render_plain_content() {
-		echo '';
+		$this->render_content();
 	}
 }
