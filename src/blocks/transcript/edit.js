@@ -54,10 +54,10 @@ export function blockTemplate({attributes, isSelected = false, setAttribute = nu
                                 <label className="tab-label ssp-transcript-title"
                                        htmlFor="chck1"
                                        style={getTitleStyle(attributes)}
-                                >{title}</label>
+                                ><RichText.Content value={ title } /></label>
                                 <div className="tab-content ssp-transcript-content"
                                      style={getContentStyle(attributes)}>
-                                    {content}
+                                    <RichText.Content value={ content } />
                                 </div>
                             </div>
                         )}

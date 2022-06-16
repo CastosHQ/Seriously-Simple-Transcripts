@@ -12,7 +12,7 @@
  * Text Domain: seriously-simple-transcripts
  *
  * @package WordPress
- * @author Hugh Lashbrooke, Sergio Zakharchenko
+ * @author Hugh Lashbrooke, Sergiy Zakharchenko
  * @since 1.0.0
  */
 

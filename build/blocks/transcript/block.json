@@ -18,12 +18,12 @@
 		},
 		"title": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".ssp-transcript-title"
 		},
 		"content": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			"selector": ".ssp-transcript-content"
 		},
