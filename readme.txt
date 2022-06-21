@@ -1,9 +1,9 @@
 === Seriously Simple Transcripts ===
-Contributors: PodcastMotor, psykro, hlashbrooke
-Tags: seriously simple podcasting, transcripts, podcast, podcasting, ssp, free, add-ons, extensions, addons
+Contributors: PodcastMotor, zahardoc, psykro, hlashbrooke
+Tags: seriously simple podcasting, transcripts, podcast, podcasting, ssp, free, add-ons, extensions, addons, gutenberg, elementor
 Requires at least: 4.4
-Tested up to: 5.0
-Stable tag: 1.0.1
+Tested up to: 6.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,14 +17,17 @@ Seriously Simple Podcasting is great for getting your audio (or video) content o
 
 Simply upload your transcript file (in any format) just like you would upload your podcast audio/video file and the link to download the transcript will appear underneath the episode media player with the rest of your episode details.
 
-**Primary Features**
+** Primary Seriously Simple Transcripts Add-On Features **
 
 - Adds a new file upload field to your episodes for adding your transcript file
 - Adds a 'Download transcript' link alongside the rest of the episode details on your episodes
+- Adds a Gutenberg 'Transcripts' block
+- Adds an Elementor 'Transcripts' block
+- Adds a podcast:transcript tag to podcast RSS feeds
 
 **How to contribute**
 
-If you want to contribute to Seriously Simple Transcripts, you can [fork the GitHub repository](https://github.com/hlashbrooke/Seriously-Simple-Transcripts) - all pull requests will be reviewed and merged if they fit into the goals for the plugin.
+If you want to contribute to Seriously Simple Transcripts, you can [fork the GitLab repository](https://gitlab.com/castos/Seriously-Simple-Transcripts) - all pull requests will be reviewed and merged if they fit into the goals for the plugin.
 
 == Installation ==
 
@@ -58,6 +61,14 @@ While PDF would be the most common file format for this kind of thing, you can u
 The transcript file works in exactly the same way as the podcast audio/video file - if you aren't uploading it directly to your WordPress site, then all you need to do is paste the URL of the file into the 'Transcript file' field when editing your episode.
 
 == Changelog ==
+
+= 1.1.0 =
+* 2022-06-21
+* UPDATE SUMMARY: Code refactoring, Gutenberg and Elementor Transcripts blocks, support podcast:transcript tag
+* [UPDATE] Code refactoring
+* [UPDATE] Added Gutenberg Transcripts block
+* [UPDATE] Added Elementor Transcripts block
+* [UPDATE] Added Podcast 2.0 namespace tag podcast:transcript to RSS feeds
 
 = 1.0.1 =
 * 2018-12-07
