@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Seriously Simple Transcripts
- * Version: 1.1.0
+ * Version: 1.1.1-beta
  * Plugin URI: https://wordpress.org/plugins/seriously-simple-transcripts
  * Description: Add downloadable transcripts to your Seriously Simple Podcasting episodes.
  * Author: Castos
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SSP_TRANSCRIPTS_VERSION', '1.1.0' );
+define( 'SSP_TRANSCRIPTS_VERSION', '1.1.1-beta' );
 define( 'SSP_TRANSCRIPTS_PLUGIN_FILE', __FILE__ );
 define( 'SSP_TRANSCRIPTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SSP_TRANSCRIPTS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
