@@ -2,8 +2,8 @@
 Contributors: PodcastMotor, zahardoc, psykro, hlashbrooke
 Tags: seriously simple podcasting, transcripts, podcast, podcasting, ssp, free, add-ons, extensions, addons, gutenberg, elementor
 Requires at least: 4.4
-Tested up to: 6.0
-Stable tag: 1.1.0
+Tested up to: 6.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,12 @@ Installing "Seriously Simple Transcripts" can be done either by searching for "S
 == Screenshots ==
 
 1. The episode details fields with the transcript field included.
-2. The 'Download transcript' link as it appears alongside your epiosde meta data.
+2. The 'Download transcript' link as it appears alongside your episode meta data.
+3. Plugin automatically adds a podcast:transcript tag to your RSS feed.
+4. Also, you can add a Gutenberg "Castos Transcripts" block.
+5. Castos Transcripts block as it appears on your page.
+6. There are a lot of customization options for the Castos Transcripts block.
+7. Option to show or hide the transcripts from Castos Transcripts block in your RSS feed.
 
 == Frequently Asked Questions ==
 
@@ -61,6 +66,11 @@ While PDF would be the most common file format for this kind of thing, you can u
 The transcript file works in exactly the same way as the podcast audio/video file - if you aren't uploading it directly to your WordPress site, then all you need to do is paste the URL of the file into the 'Transcript file' field when editing your episode.
 
 == Changelog ==
+
+= 1.1.1 =
+* 2022-12-02
+* Fix: Transcripts block showed part of added text if it was long enough
+* Added screenshots and updated Tested up to
 
 = 1.1.0 =
 * 2022-06-21
