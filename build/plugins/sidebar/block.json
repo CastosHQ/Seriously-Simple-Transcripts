@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/ssp-transcripts-sidebar",
+	"version": "1.2.0",
+	"title": "Seriously Simple Transcript file settings",
+	"category": "text",
+	"icon": "playlist-audio",
+	"description": "Seriously Simple Transcripts sidebar file settings.",
+	"attributes": {
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "seriously-simple-transcripts",
+	"editorScript": "file:./index.js"
+}
