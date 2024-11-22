@@ -61,7 +61,7 @@ abstract class Abstract_Controller implements Controller {
 	 * @return void
 	 */
 	protected function load_properties() {
-		$this->_version = SSP_TRANSCRIPTS_VERSION;
+		$this->_version = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? time() : SSP_TRANSCRIPTS_VERSION;
 		$this->file     = SSP_TRANSCRIPTS_PLUGIN_FILE;
 
 		$this->_token        = 'ssp_transcripts';
