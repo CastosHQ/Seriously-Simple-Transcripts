@@ -17,7 +17,14 @@ const FileUploader = ( { audioUrl, onChangeUrl, onSelectAudio } ) => {
 			<MediaUploadCheck>
 				<MediaUpload
 					onSelect={ onSelectAudio }
-					allowedTypes={ ['text'] }
+					allowedTypes={[
+						'application/pdf',          // PDF
+						'text/plain',               // Plain text (TXT)
+						'text/vtt',                 // WebVTT
+						'application/json',         // JSON
+						'text/html',                // HTML
+						'application/x-subrip',     // SRT (SubRip Subtitle File)
+					]}
 					render={ ( { open } ) => (
 						<Button
 							className={ 'button w-full' }
