@@ -18,5 +18,8 @@
 	"devDependencies": {
 		"@wordpress/scripts": "^22.5.0",
 		"npm": "^10.2.0"
+	},
+	"overrides": {
+		"immutable": "4.3.9"
 	}
 }
