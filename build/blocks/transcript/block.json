@@ -1,62 +1,62 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "create-block/castos-transcript",
-	"version": "1.1.0",
-	"title": "Castos Transcript",
-	"category": "text",
-	"icon": "playlist-audio",
-	"description": "Transcript of your episode. It won't be shown in the feed.",
-	"attributes": {
-		"hideTitle": {
-			"type": "boolean",
-			"default": false
-		},
-		"showContent": {
-			"type": "boolean",
-			"default": false
-		},
-		"title": {
-			"type": "string",
-			"source": "html",
-			"selector": ".ssp-transcript-title"
-		},
-		"content": {
-			"type": "string",
-			"source": "html",
-			"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			"selector": ".ssp-transcript-content"
-		},
-		"titleColor": {
-			"type": "string",
-			"default": "#000000"
-		},
-		"titleSize": {
-			"type": "integer",
-			"default": 16
-		},
-		"titleBg": {
-			"type": "string",
-			"default": "#f3f3f4"
-		},
-		"contentSize": {
-			"type": "integer",
-			"default": 16
-		},
-		"contentColor": {
-			"type": "string",
-			"default": "#000000"
-		},
-		"contentBg": {
-			"type": "string",
-			"default": "#ffffff"
-		}
-	},
-	"supports": {
-		"html": false
-	},
-	"textdomain": "seriously-simple-transcripts",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/castos-transcript",
+  "version": "1.1.0",
+  "title": "Castos Transcript",
+  "category": "text",
+  "icon": "playlist-audio",
+  "description": "Transcript of your episode. It won't be shown in the feed.",
+  "attributes": {
+    "hideTitle": {
+      "type": "boolean",
+      "default": false
+    },
+    "showContent": {
+      "type": "boolean",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": ".ssp-transcript-title"
+    },
+    "content": {
+      "type": "string",
+      "source": "html",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "selector": ".ssp-transcript-content"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "titleSize": {
+      "type": "integer",
+      "default": 16
+    },
+    "titleBg": {
+      "type": "string",
+      "default": "#f3f3f4"
+    },
+    "contentSize": {
+      "type": "integer",
+      "default": 16
+    },
+    "contentColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "contentBg": {
+      "type": "string",
+      "default": "#ffffff"
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "seriously-simple-transcripts",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
 }
