@@ -1,6 +1,6 @@
 {
 	"name": "seriously-simple-transcripts",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "Seriously Simple Transcripts plugin",
 	"author": "Castos",
 	"license": "GPL-2.0-or-later",
@@ -16,7 +16,7 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^22.5.0",
+		"@wordpress/scripts": "^35.0.0",
 		"npm": "^10.2.0"
 	}
 }
